@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    android:padding="5dp">
+
+    <com.github.siyamed.shapeimageview.RoundedImageView
+        android:id="@+id/image_carnival"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+
+        android:scaleType="fitXY"
+        android:padding="2dp"
+        app:siRadius="10dp"
+        app:siBorderWidth="1dp"
+        app:siBorderColor="@color/black"
+
+        />
+
+    <TextView
+        android:id="@+id/title_carnival_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Miami-Broward One"
+        android:padding="16dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"/>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/white"
+        android:layout_below="@id/title_carnival_list"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"/>
+
+    <TextView
+        android:id="@+id/date_carnival_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="25dp"
+        android:text="Hello"
+        android:layout_below="@+id/view"/>
+</RelativeLayout>

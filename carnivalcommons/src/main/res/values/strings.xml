@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CarnivalCommons</string>
+
+    <string name="network_status">Network Fail</string>
+    <string name="network_fail_message">You don\'t have network connection. Please connect and try again!</string>
+
+    <string name="error_status">Bad Response</string>
+    <string name="error_message">Some thing went wrong with your request. Please try again!</string>
+
+</resources>

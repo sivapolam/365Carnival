@@ -1,1 +1,1 @@
-include ':app'
+include ':app', ':carnivaladmin', ':carnivalcommons', ':facebook', ':roundedImageView'
