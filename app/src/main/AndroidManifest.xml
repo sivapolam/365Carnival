@@ -35,7 +35,7 @@
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
-        android:icon="@drawable/carnival_logo"
+        android:icon="@drawable/carnival_logo_new"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:theme="@style/AppTheme">
