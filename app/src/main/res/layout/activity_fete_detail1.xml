@@ -1,0 +1,332 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <RelativeLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/black">
+
+        <ImageView
+            android:id="@+id/back_arrow_carnivals_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@drawable/back_arrow" />
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_fd_image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fete_image_height"
+        android:layout_gravity="center_vertical"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layout_bottom"
+        android:layout_below="@id/iv_fd_image"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/black"
+        android:layout_marginTop="10dp">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_fd_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="Title"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/fete_title_header_size"
+                    android:textStyle="bold"
+                    android:typeface="sans"
+                    />
+
+                <View
+                    android:id="@+id/v_fd_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/tv_fd_title"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="10dp">
+
+                    <ImageView
+                        android:id="@+id/iv_fd_loc"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_below="@id/v_fd_title"
+                        android:src="@drawable/mapicon" />
+
+                    <TextView
+                        android:id="@+id/tv_fd_venue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:text="Venue"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/fete_title_header_size" />
+                </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+                <ImageView
+                    android:id="@+id/iv_fd_date"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/iv_fd_loc"
+                    android:src="@drawable/date" />
+
+                <TextView
+                    android:id="@+id/tv_fd_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/iv_fd_date"
+                    android:layout_below="@id/tv_fd_venue"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/iv_fd_date"
+                    android:gravity="center_vertical"
+                    android:text="25-February-2017"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/fete_title_header_size"
+                    />
+
+                <View
+                    android:id="@+id/v_str_time"
+                    android:layout_width="1dp"
+                    android:layout_height="20dp"
+                    android:layout_alignTop="@id/tv_fd_date"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/tv_fd_date"
+                    android:background="@color/red" />
+
+                <TextView
+                    android:id="@+id/tv_fd_date2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/iv_fd_date"
+                    android:layout_below="@id/tv_fd_venue"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/v_str_time"
+                    android:gravity="center_vertical"
+                    android:text="25-February-2017"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/fete_title_header_size"
+                    />
+
+            </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="10dp">
+                    <ImageView
+                        android:id="@+id/iv_fd_time"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_below="@id/iv_fd_date"
+                        android:src="@drawable/clock" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/layout_time_row"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/tv_fd_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/iv_fd_time"
+                            android:layout_below="@id/tv_fd_venue"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/iv_fd_date"
+                            android:gravity="center_vertical"
+                            android:text="22:00 - 10:00"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/fete_title_header_size" />
+
+
+
+                        <LinearLayout
+                            android:id="@+id/ll_contact"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/tv_fd_time"
+                            android:layout_toRightOf="@id/tv_fd_time"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_fd_pc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@id/iv_fd_date"
+                                android:layout_below="@id/tv_fd_venue"
+                                android:layout_marginLeft="10dp"
+                                android:layout_toRightOf="@id/iv_fd_date"
+                                android:gravity="center_vertical"
+                                android:text="1234567890"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/fete_title_header_size" />
+
+                            <View
+                                android:id="@+id/v_str_c"
+                                android:layout_width="1dp"
+                                android:layout_height="20dp"
+                                android:layout_alignTop="@id/tv_fd_date"
+                                android:layout_marginLeft="15dp"
+                                android:layout_toRightOf="@id/tv_fd_date"
+                                android:background="@color/red" />
+
+                            <TextView
+                                android:id="@+id/tv_fd_sc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@id/iv_fd_date"
+                                android:layout_below="@id/tv_fd_venue"
+                                android:layout_marginLeft="10dp"
+                                android:layout_toRightOf="@id/v_str_time"
+                                android:gravity="center_vertical"
+                                android:text="1234567890"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/fete_title_header_size" />
+                        </LinearLayout>
+
+
+                       </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layout_fd_sc_newline"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:id="@+id/tv_fd_sc_newline"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@id/iv_fd_date"
+                                android:layout_below="@id/tv_fd_venue"
+                                android:layout_marginLeft="10dp"
+                                android:layout_toRightOf="@id/v_str_time"
+                                android:gravity="center_vertical"
+                                android:text="1234567890"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/fete_title_header_size" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_ticket"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_fd_time"
+                    android:layout_margin="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_fd_ticket"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="Ticket : "
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/fete_title_header_size" />
+
+                    <TextView
+                        android:id="@+id/tv_fd_ticket_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/tv_fd_ticket"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/tv_fd_ticket"
+                        android:gravity="center_vertical"
+                        android:text="Ticket Details"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/fete_title_header_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ll_ticket"
+                    android:layout_margin="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_fd_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:gravity="center_vertical"
+                        android:text="Details : "
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/fete_title_header_size" />
+
+                    <TextView
+                        android:id="@+id/tv_fd_det_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/tv_fd_details"
+                        android:layout_marginLeft="6dp"
+                        android:layout_toRightOf="@id/tv_fd_details"
+                        android:gravity="center_vertical"
+                        android:text="Ticket Details"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/fete_title_header_size" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--</HorizontalScrollView>-->
+
+        </ScrollView>
+    </LinearLayout>
+
+
+</RelativeLayout>

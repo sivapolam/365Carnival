@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <fragment
+        android:id="@+id/map_view"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:tag="map_view_tag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+    <RelativeLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#000">
+
+        <ImageView
+            android:id="@+id/back_arrow_carnivals_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="16dp"
+            android:src="@drawable/back_arrow" />
+
+        <Button
+            android:id="@+id/update_my_location_btn"
+            style="@style/buttonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="Update your Location"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/text_no_friends_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Friends Locations not available"
+        android:textColor="@color/red"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:layout_centerHorizontal="true"
+
+        android:layout_alignParentBottom="true"
+        android:visibility="visible"
+        android:layout_above="@id/layout_bottom"
+        android:layout_marginBottom="50dp"
+        android:paddingBottom="60dp"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_privacy_alert"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/material_grey_600">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please Disable privacy for the access."
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/friends_image_width_height"
+    android:layout_margin="5dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/friends_image_width_height"
+        android:layout_marginTop="3dp"
+        android:background="@color/black">
+
+        <ImageView
+            android:id="@+id/image_friend"
+            android:layout_width="@dimen/friends_image_width_height"
+            android:layout_height="@dimen/friends_image_width_height"
+            android:padding="6dp"
+            android:scaleType="fitXY"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/friends_image_width_height"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/image_friend"
+            android:background="@color/black">
+
+            <LinearLayout
+                android:id="@+id/layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/name_friend"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/friends_list_item_view_margin_bottom"
+                    android:text="Name"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/band_list_item_title_text_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/status_friend"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="Status"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="italic"
+                    android:layout_below="@id/name_friend"
+                    android:visibility="gone"/>
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/band_list_item_view_height"
+                    android:layout_below="@id/status_friend"
+                    android:layout_marginBottom="@dimen/friends_list_item_view_margin_bottom"
+                    android:layout_marginRight="@dimen/friends_list_item_view_margin_right"
+                    android:background="@color/white" />
+
+                <TextView
+                    android:id="@+id/email_friend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view"
+                    android:text="Email Id"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/friends_list_item_email_text_size"
+                    android:textStyle="bold"
+                    android:singleLine="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true">
+
+                <Button
+                    android:id="@+id/status_btn1"
+                    android:background="@drawable/bg_accept"
+                    android:layout_width="@dimen/friends_list_item_accept_decline_width"
+                    android:layout_height="@dimen/friends_list_item_accept_decline_height"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/accept"
+                    android:textSize="@dimen/friends_list_item_accept_decline_text_size"
+                    android:visibility="gone"
+                    android:textColor="@color/white"/>
+
+                <Button
+                    android:id="@+id/status_btn2"
+                    android:background="@drawable/bg_unfriend"
+                    android:layout_width="@dimen/friends_list_item_accept_decline_width"
+                    android:layout_height="@dimen/friends_list_item_accept_decline_height"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="7dp"
+                    android:text="@string/decline"
+                    android:textSize="@dimen/friends_list_item_accept_decline_text_size"
+                    android:visibility="invisible"
+                    android:textColor="@color/white"/>
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/status_btn3"
+                android:background="@drawable/bg_unfriend"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="7dp"
+                android:layout_marginRight="7dp"
+                android:text="UNFRIEND"
+                android:textSize="@dimen/friends_list_item_unfriend_text_size"
+                android:visibility="gone"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/status_cancel_btn"
+                android:background="@drawable/bg_unfriend"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="7dp"
+                android:layout_marginRight="7dp"
+                android:text="Cancel"
+                android:textSize="@dimen/friends_list_item_unfriend_text_size"
+                android:visibility="gone"
+                android:textColor="@color/white"/>
+
+            <ImageView
+                android:id="@+id/image_following"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignBottom="@+id/layout_status"
+                android:layout_alignTop="@+id/layout_status"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:src="@drawable/ic_following"
+                android:visibility="gone" />
+
+
+            <TextView
+                android:id="@+id/friend_status_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/layout_status"
+                android:layout_alignTop="@+id/layout_status"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/layout_status"
+                android:layout_toRightOf="@id/image_following"
+                android:gravity="center_vertical"
+                android:text="REQUEST RECEIVED"
+                android:textAllCaps="true"
+                android:textColor="@color/material_grey_300"
+                android:textSize="@dimen/friends_list_item_sub_title_text_size" />
+
+
+            <!--<LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:padding="@dimen/band_list_item_bottom_layout_margin_left"
+                android:orientation="horizontal"
+                android:gravity="bottom">
+
+                <TextView
+                    android:id="@+id/time_band"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.2"
+                    android:text="00:53:40 ago"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/band_list_item_time_text_size" />
+
+                <TextView
+                    android:id="@+id/updates_band"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="4 UPDATES"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/band_list_item_time_text_size"
+                    />
+            </LinearLayout>
+    -->
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

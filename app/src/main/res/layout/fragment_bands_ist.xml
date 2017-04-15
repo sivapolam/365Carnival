@@ -1,0 +1,37 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bands_bg"
+    tools:context="com.techplicit.mycarnival.CarnivalsListActivity$PlaceholderFragment">
+
+    <ProgressBar
+        android:id="@+id/progress_carnivals_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+
+    <GridView
+        android:id="@+id/grid_carnivals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:cacheColorHint="@android:color/transparent"
+        android:dividerHeight="0dp"
+        android:listSelector="@android:color/transparent"
+        android:numColumns="2" />
+
+    <TextView
+        android:id="@+id/emptyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="No Network ! Please Connect \n and Tap to Try Again !!"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/red"
+        android:visibility="gone" />
+
+</RelativeLayout>

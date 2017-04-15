@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/band_image_width_height"
+    android:paddingTop="10dp"
+    android:background="@color/material_grey_600">
+
+    <ImageView
+        android:id="@+id/image_band"
+        android:layout_width="@dimen/band_image_width_height"
+        android:layout_height="@dimen/band_image_width_height"
+        android:scaleType="fitXY" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/band_image_width_height"
+        android:background="@color/black"
+        android:layout_toRightOf="@id/image_band">
+
+        <RelativeLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/title_band"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/band_list_item_title_margin_left"
+                android:layout_marginTop="@dimen/band_list_item_title_margin_top"
+                android:text="Miami-Broward One"
+                android:textColor="@color/white"
+                android:textSize="@dimen/band_list_item_title_text_size"/>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/band_list_item_view_height"
+                android:layout_below="@id/title_band"
+                android:layout_marginBottom="@dimen/band_list_item_view_margin_bottom"
+                android:layout_marginLeft="@dimen/band_list_item_view_margin_left"
+                android:layout_marginRight="@dimen/band_list_item_view_margin_right"
+                android:layout_marginTop="@dimen/band_list_item_view_margin_top"
+                android:background="@color/white" />
+
+            <TextView
+                android:id="@+id/sub_title_band"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="4"
+                android:layout_below="@id/view"
+                android:layout_marginLeft="@dimen/band_list_item_title_margin_left"
+                android:text="Apple Inc., Cupertino"
+                android:textColor="@color/white"
+                android:textSize="@dimen/band_list_item_sub_title_text_size" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:padding="3dp"
+            android:orientation="horizontal"
+            android:gravity="bottom"
+            >
+
+            <TextView
+                android:id="@+id/time_band"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:text="00:53:40 ago"
+                android:textColor="@color/white"
+                android:textSize="@dimen/band_list_item_time_text_size"
+                android:singleLine="true"
+                android:layout_gravity="right"
+                android:gravity="right"/>
+
+            <TextView
+                android:id="@+id/updates_band"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="4 UPDATES"
+                android:textColor="@color/white"
+                android:textSize="@dimen/band_list_item_time_text_size"
+                android:gravity="right"
+                android:singleLine="true"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

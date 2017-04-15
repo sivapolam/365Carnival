@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bands_bg">
+
+    <RelativeLayout
+        android:id="@+id/layout_friends_search"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="10dp">
+
+        <Button
+            android:id="@+id/search_friends_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_friends"
+            android:drawableLeft="@drawable/ic_add_friends"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="@string/add_friends"
+            android:textColor="#fff"
+            android:textSize="10sp" />
+
+        <Switch
+            android:id="@+id/privacy_mode_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:checked="false"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/privacy_mode_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@id/privacy_mode_switch"
+            android:gravity="center_vertical"
+            android:text="@string/enable_privacy_mode"
+            android:textColor="@color/white"
+            android:textSize="11sp" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/text_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="No Friends"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="#f00"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:background="#000">
+
+        <ImageView
+            android:id="@+id/back_arrow_carnivals_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@drawable/back_arrow"
+            android:visibility="gone"/>
+
+        <include
+            android:id="@+id/layout_horizontal_buttons"
+            layout="@layout/horizontal_scroll_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/back_arrow_carnivals_list"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/list_friends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/layout_bottom"
+        android:layout_below="@id/layout_friends_search"
+        android:layout_margin="10dp"
+        android:layout_marginTop="5dp"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null"
+        android:dividerHeight="5dp"
+        android:listSelector="@android:color/transparent">
+
+    </ListView>
+
+</RelativeLayout>
