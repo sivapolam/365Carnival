@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">CarnivalAdmin</string>
+    <string name="app_name">365carnivalAdmin</string>
+    <string name="update">UPDATE</string>
+    <string name="stop_at">STOP @</string>
+    <string name="select_band">Select Band</string>
+    <string name="minute_text">MINUTE</string>
+    <string name="updates_text">UPDATES</string>
+    <string name="band_update">BAND UPDATE</string>
+    <string name="smart_update">SMART UPDATE</string>
+
+    <string name="update_location_dialog_title">UPDATE YOUR LOCATION</string>
+    <string name="smart_update_title">Smart Update</string>
+    <string name="band">BANDS</string>
+    <string name="band_update_title">Update Location</string>
+
+    <string name="select">Select</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="progress_message_band_update">Updating Band Location...</string>
+    <string name="loading_bands">Loading Bands...</string>
+    <string name="version_num_admin">0.1.4</string>
 </resources>
