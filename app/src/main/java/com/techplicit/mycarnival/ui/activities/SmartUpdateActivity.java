@@ -63,6 +63,7 @@ import com.techplicit.mycarnival.utils.Utility;
 
 import org.json.JSONObject;
 
+import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -864,12 +865,12 @@ public class SmartUpdateActivity extends BaseActivity
 
                 try {
 
-                    String updateLocationUrl = Constants.BASE_URL + "updatebandlocation?carnival=" + carnivalName +
-                            "&band=" + bandNameSelected + "&address=" + bandAddress.replace(" ", "%20") + "&latitude=" + bandLatitude + "&longitude=" + bandLongitude;
+                    String updateLocationUrl = Constants.BASE_URL + "updatebandlocation?carnival=" + URLEncoder.encode(carnivalName, "UTF-8") +
+                            "&band=" + URLEncoder.encode(bandNameSelected, "UTF-8") + "&address=" + URLEncoder.encode(bandAddress, "UTF-8") + "&latitude=" + URLEncoder.encode(bandLatitude, "UTF-8") + "&longitude=" + URLEncoder.encode(bandLongitude, "UTF-8");
 
-                    if (updateLocationUrl.contains(" & ") || updateLocationUrl.contains(" ")) {
+                    /*if (updateLocationUrl.contains(" & ") || updateLocationUrl.contains(" ")) {
                         updateLocationUrl = updateLocationUrl.replace(" & ", "+%26+").replace(" ", "%20").trim();
-                    }
+                    }*/
 
                     response = jsonParser.makeHttpRequest(
                             updateLocationUrl, "GET", null);

@@ -297,7 +297,7 @@ public class CarnivalsListActivity extends BaseActivity
                 Utility.displayNetworkFailDialog(mContext, ERROR, "Success", "Successfully Invited !");
             }
 
-            if (jsonArray != null) {
+            if (jsonArray != null && jsonArray.length() > 0) {
 
                 CarnivalsSingleton.getInstance().setCarnivalsJsonResponse(jsonArray);
 
@@ -308,6 +308,10 @@ public class CarnivalsListActivity extends BaseActivity
                     this.carnivalsProgress.setVisibility(View.GONE);
                     this.emptyText.setVisibility(View.GONE);
                 }
+            } else {
+                this.carnivalsProgress.setVisibility(View.GONE);
+                this.emptyText.setVisibility(View.VISIBLE);
+                this.emptyText.setText("No Carnivals Available");
             }
 
             isCreating = false;

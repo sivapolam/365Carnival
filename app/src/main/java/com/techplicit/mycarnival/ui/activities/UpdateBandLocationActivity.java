@@ -64,6 +64,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -674,12 +675,12 @@ public class UpdateBandLocationActivity extends BaseActivity
 
                 try {
 
-                    String updateLocationUrl = Constants.BASE_URL + "updatebandlocation?carnival=" + carnivalName +
-                            "&band=" + bandNameSelected + "&address=" + bandAddress.replace(" ", "%20") + "&latitude=" + bandLatitude + "&longitude=" + bandLongitude;
+                    String updateLocationUrl = Constants.BASE_URL + "updatebandlocation?carnival=" + URLEncoder.encode(carnivalName, "UTF-8") +
+                            "&band=" + URLEncoder.encode(bandNameSelected, "UTF-8") + "&address=" + URLEncoder.encode(bandAddress, "UTF-8") + "&latitude=" + bandLatitude + "&longitude=" + bandLongitude;
 
-                    if (updateLocationUrl.contains(" & ") || updateLocationUrl.contains(" ")) {
+                    /*if (updateLocationUrl.contains(" & ") || updateLocationUrl.contains(" ")) {
                         updateLocationUrl = updateLocationUrl.replace(" & ", "+%26+").replace(" ", "%20").trim();
-                    }
+                    }*/
                     response = jsonParser.makeHttpRequest(
                             updateLocationUrl, "GET", null);
 
@@ -1242,11 +1243,11 @@ public class UpdateBandLocationActivity extends BaseActivity
                 SharedPreferences sharedPreferences = mContext.getSharedPreferences(PREFS_CARNIVAL, Context.MODE_PRIVATE);
                 String selectedCarnivalName = sharedPreferences.getString(SELECTED_CARNIVAL_NAME, "");
 
-                if (selectedCarnivalName.contains(" & ") || selectedCarnivalName.contains(" ")) {
+                /*if (selectedCarnivalName.contains(" & ") || selectedCarnivalName.contains(" ")) {
                     selectedCarnivalNameTrimmed = selectedCarnivalName.replace(" & ", "+%26+").replace(" ", "%20").trim();
-                }
+                }*/
                 responseStatus = jsonParser.makeHttpRequest(
-                        BANDS_URL + selectedCarnivalNameTrimmed, "GET", null);
+                        BANDS_URL + URLEncoder.encode(selectedCarnivalName, "UTF-8"), "GET", null);
 
                 if (responseStatus != null && !responseStatus.equalsIgnoreCase(ERROR)) {
                     JSONArray jsonArray = null;

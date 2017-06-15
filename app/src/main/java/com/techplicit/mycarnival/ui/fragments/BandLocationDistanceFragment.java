@@ -25,6 +25,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.techplicit.mycarnival.GpsSettingsDialogListener;
 import com.techplicit.mycarnival.R;
@@ -40,6 +41,7 @@ import com.techplicit.mycarnival.utils.Utils;
 
 import org.json.JSONArray;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -81,7 +83,7 @@ public class BandLocationDistanceFragment extends Fragment implements Constants,
     private static SharedPreferences sharedPreferences;
     private AlertDialog changePassDialog;
     private GpsSettingsDialogListener mCallbackListener;
-
+    static TextView emptyText;
     /**
      * Returns a new instance of this fragment for the given section
      * number.
@@ -104,6 +106,8 @@ public class BandLocationDistanceFragment extends Fragment implements Constants,
         carnivalsList = (ListView) rootView.findViewById(R.id.list_carnivals);
         carnivalsProgress = (ProgressBar) rootView.findViewById(R.id.progress_carnivals_list);
         carnivalsProgress.getIndeterminateDrawable().setColorFilter(0xFFFF0000, android.graphics.PorterDuff.Mode.MULTIPLY);
+        emptyText = (TextView) rootView.findViewById(R.id.emptyText);
+        emptyText.setVisibility(View.GONE);
 
         sharedPreferences = getActivity().getSharedPreferences(PREFS_CARNIVAL, Context.MODE_PRIVATE);
         isLocationUpdated = sharedPreferences.getBoolean(IS_DISATNCE_NEEDS_TO_LOAD, false);
@@ -236,16 +240,18 @@ public class BandLocationDistanceFragment extends Fragment implements Constants,
 
                 String selectedCarnivalName = sharedPreferences.getString(SELECTED_CARNIVAL_NAME, "");
 
-                String selectedCarnivalNameTrimmed = null;
+                /*String selectedCarnivalNameTrimmed = selectedCarnivalName;
 
                 if (selectedCarnivalName.contains(" & ")) {
                     selectedCarnivalNameTrimmed = selectedCarnivalName.replace(" & ", "+%26+").trim();
                 } else if (selectedCarnivalName.contains(" ")) {
                     selectedCarnivalNameTrimmed = selectedCarnivalName.replace(" ", "%20").trim();
-                }
+                }*/
 
                 responseStatus = jsonParser.makeHttpRequest(
-                        BANDS_URL + selectedCarnivalNameTrimmed, "GET", null);
+                        BANDS_URL + URLEncoder.encode(selectedCarnivalName, "UTF-8"), "GET", null);
+
+                Log.e(TAG, "Bands Location Distance URL: "+BANDS_URL + selectedCarnivalName);
 
                 if (responseStatus != null && !responseStatus.equalsIgnoreCase(ERROR)) {
                     JSONArray jsonArray = null;
@@ -272,7 +278,7 @@ public class BandLocationDistanceFragment extends Fragment implements Constants,
                 Utility.displayNetworkFailDialog(mContext, ERROR, "Success", "Successfully Invited !");
             }
 
-            if (jsonArray != null) {
+            if (jsonArray != null && jsonArray.length() > 0) {
 
                 CarnivalsSingleton.getInstance().setBandsJsonResponse(jsonArray);
 
@@ -319,6 +325,10 @@ public class BandLocationDistanceFragment extends Fragment implements Constants,
                     editor.commit();
 
                 }
+            } else {
+                this.carnivalsProgress.setVisibility(View.GONE);
+                emptyText.setVisibility(View.VISIBLE);
+                emptyText.setText("No Bands Available");
             }
 
         }

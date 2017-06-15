@@ -26,6 +26,7 @@ import com.techplicit.mycarnival.utils.Utility;
 
 import org.json.JSONArray;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 /**
@@ -185,15 +186,21 @@ public class BandLocationAlphaSortFragment extends Fragment implements Constants
                 SharedPreferences sharedPreferences = mContext.getSharedPreferences(PREFS_CARNIVAL, Context.MODE_PRIVATE);
                 String selectedCarnivalName = sharedPreferences.getString(SELECTED_CARNIVAL_NAME, "");
 
-
-                if (selectedCarnivalName.contains(" & ") || selectedCarnivalName.contains(" ")) {
+                /*selectedCarnivalNameTrimmed = selectedCarnivalName;
+                if ((!selectedCarnivalName.isEmpty() && selectedCarnivalName.length() > 1)
+                        && (selectedCarnivalName.contains(" & ") || selectedCarnivalName.contains(" "))) {
                     selectedCarnivalNameTrimmed = selectedCarnivalName.replace(" & ", "+%26+").replace(" ", "%20").trim();
-                }
+                } else if (selectedCarnivalNameTrimmed.contains(" ")){
+                    selectedCarnivalNameTrimmed = selectedCarnivalName.replace(" ", "%20").trim();
+                    Log.e(TAG, "length: "+selectedCarnivalNameTrimmed.length());
+                }*/
 
                 responseStatus = jsonParser.makeHttpRequest(
-                        BANDS_URL + selectedCarnivalNameTrimmed, "GET", null);
+                        BANDS_URL + URLEncoder.encode(selectedCarnivalName, "UTF-8"), "GET", null);
 
+                Log.e(TAG, "Bands Location Sort URL: "+BANDS_URL + URLEncoder.encode(selectedCarnivalName, "UTF-8"));
 
+                Log.e(TAG, "responseStatus: "+responseStatus);
                 if (responseStatus != null && !responseStatus.equalsIgnoreCase(ERROR)) {
                     JSONArray jsonArray = null;
 
@@ -222,7 +229,7 @@ public class BandLocationAlphaSortFragment extends Fragment implements Constants
                 emptyText.setText(""+mContext.getResources().getString(R.string.error_message)+"\n Tap to try Again!!");
             }
 
-            if (jsonArray != null) {
+            if (jsonArray != null && jsonArray.length() > 0) {
 
                 CarnivalsSingleton.getInstance().setBandsJsonResponse(jsonArray);
 
@@ -233,6 +240,10 @@ public class BandLocationAlphaSortFragment extends Fragment implements Constants
                     this.carnivalsProgress.setVisibility(View.GONE);
                     emptyText.setVisibility(View.GONE);
                 }
+            } else {
+                this.carnivalsProgress.setVisibility(View.GONE);
+                this.emptyText.setVisibility(View.VISIBLE);
+                this.emptyText.setText("No Bands Available");
             }
 
             SharedPreferences.Editor editor = sharedPreferences.edit();

@@ -57,7 +57,7 @@ public interface Constants {
     String UPDATE_USER_PRIVACY_URL = "http://52.33.80.237/carnival/user/privacy";
     String PRIVACY_URL = "http://www.iubenda.com/api/privacy-policy/7778591";*/
 
-    String COMMON_URL = "http://34.209.73.148:8080/carnival/";
+    String COMMON_URL = "https://api.365carnival.net:8443/carnival/";
 //    String COMMON_URL = "http://52.39.152.174/carnival/";
     String COMMON_USER_SERVICE_URL = "http://52.39.152.174/userservice/";
     String BASE_URL = COMMON_URL + "service/";

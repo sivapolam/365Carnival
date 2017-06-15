@@ -49,6 +49,7 @@ import com.techplicit.mycarnival.utils.Utility;
 
 import org.json.JSONArray;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -393,16 +394,16 @@ public class BandLocationViewFragment extends Fragment implements Constants, Loc
                 SharedPreferences sharedPreferences = mContext.getSharedPreferences(PREFS_CARNIVAL, Context.MODE_PRIVATE);
                 String selectedCarnivalName = sharedPreferences.getString(SELECTED_CARNIVAL_NAME, "");
 
-                String selectedCarnivalNameTrimmed = null;
+                /*String selectedCarnivalNameTrimmed = null;
 
                 if (selectedCarnivalName.contains(" & ")) {
                     selectedCarnivalNameTrimmed = selectedCarnivalName.replace(" & ", "+%26+").trim();
                 } else if (selectedCarnivalName.contains(" ")) {
                     selectedCarnivalNameTrimmed = selectedCarnivalName.replace(" ", "%20").trim();
-                }
+                }*/
 
                 responseStatus = jsonParser.makeHttpRequest(
-                        BANDS_URL + selectedCarnivalNameTrimmed, "GET", null);
+                        BANDS_URL + URLEncoder.encode(selectedCarnivalName, "UTF-8"), "GET", null);
 
 
                 if (responseStatus != null && !responseStatus.equalsIgnoreCase(ERROR)) {

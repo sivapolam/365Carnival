@@ -21,6 +21,7 @@ import org.json.JSONObject;
 
 public class ApiResponsePresenter implements IRequestInterface {
 
+    private static final String LOG_TAG = ApiResponsePresenter.class.getSimpleName();
     public IResponseInterface iResponseInterface;
 
     public ApiResponsePresenter(IResponseInterface iResponseInterface) {
@@ -58,7 +59,7 @@ public class ApiResponsePresenter implements IRequestInterface {
 
                 @Override
                 public void onErrorResponse(VolleyError error) {
-
+                    Log.e(LOG_TAG, "obj onErrorResponse " + error.toString());
                     if (error instanceof NoConnectionError) {
                         iResponseInterface.onResponseFailure(reqName);
                     } else if (error instanceof TimeoutError) {
@@ -84,10 +85,13 @@ public class ApiResponsePresenter implements IRequestInterface {
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
+                    Log.e(LOG_TAG, "error onErrorResponse " + error.toString());
                     if (error instanceof NoConnectionError) {
                         iResponseInterface.onResponseFailure(reqName);
                     } else if (error instanceof TimeoutError) {
                         iResponseInterface.onResponseFailure(reqName);
+                    } else {
+                        iResponseInterface.onResponseFailure(error.getLocalizedMessage());
                     }
                 }
             });

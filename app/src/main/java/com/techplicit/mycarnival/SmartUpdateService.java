@@ -35,6 +35,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -490,8 +491,8 @@ public class SmartUpdateService extends Service implements LocationListener, Con
 
             try {
 
-                String updateLocationUrl = Constants.BASE_URL + "updatebandlocation?carnival=" + carnivalName +
-                        "&band=" + bandNameSelected + "&address=" + bandAddress.replace(" ", "%20") + "&latitude=" + bandLatitude + "&longitude=" + bandLongitude;
+                String updateLocationUrl = Constants.BASE_URL + "updatebandlocation?carnival=" + URLEncoder.encode(carnivalName, "UTF-8") +
+                        "&band=" + URLEncoder.encode(bandNameSelected, "UTF-8") + "&address=" + URLEncoder.encode(bandAddress, "UTF-8") + "&latitude=" + bandLatitude + "&longitude=" + bandLongitude;
 
 //                String updateLocationUrl = Constants.BASE_URL + "updatebandlocation?carnival=" + carnivalName +
 //                        "&band=" + bandNameSelected + "&address=" + dummyAddress.replace(" ", "%20") + "&latitude=" + dummyLatitude + "&longitude=" + dummyLongitude;
@@ -500,9 +501,9 @@ public class SmartUpdateService extends Service implements LocationListener, Con
 //                    String updateLocationUrl = Constants.BASE_URL + "updatebandlocation?carnival=" + carnivalName +
 //                            "&band=" + bandNameSelected + "&address=Hyderabad&latitude=17.3700&longitude=78.4800";
 
-                if (updateLocationUrl.contains(" & ") || updateLocationUrl.contains(" ")) {
+                /*if (updateLocationUrl.contains(" & ") || updateLocationUrl.contains(" ")) {
                     updateLocationUrl = updateLocationUrl.replace(" & ", "+%26+").replace(" ", "%20").trim();
-                }
+                }*/
 
                 Log.e("Siva", "updateLocationUrl--> " + updateLocationUrl);
 

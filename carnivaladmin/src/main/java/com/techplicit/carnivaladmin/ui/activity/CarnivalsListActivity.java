@@ -243,7 +243,7 @@ public class CarnivalsListActivity extends AppCompatActivity
                 UtilityCommon.displayNetworkFailDialog(mContext, ERROR);
             }
 
-            if (jsonArray != null) {
+            if (jsonArray != null && jsonArray.length() > 0) {
 
                 CommonSingleton.getInstance().setCarnivalsJsonResponse(jsonArray);
 
@@ -254,6 +254,10 @@ public class CarnivalsListActivity extends AppCompatActivity
                     this.carnivalsProgress.setVisibility(View.GONE);
                     this.emptyText.setVisibility(View.GONE);
                 }
+            } else {
+                this.carnivalsProgress.setVisibility(View.GONE);
+                this.emptyText.setVisibility(View.VISIBLE);
+                this.emptyText.setText("No Carnivals Available");
             }
 
             isCreating = false;

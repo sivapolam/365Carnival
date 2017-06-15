@@ -163,10 +163,16 @@ public class BandsAlphaSortFragment extends Fragment implements Constants, IResp
         Type listType = new TypeToken<ArrayList<BandsPojo>>() {
         }.getType();
         data = (ArrayList<BandsPojo>) gson.fromJson(resp, listType);
-        bandsAdapter = new BandsAdapter(getActivity(), data);
-        carnivalsList.setAdapter(bandsAdapter);
-        carnivalsProgress.setVisibility(View.GONE);
-        emptyText.setVisibility(View.GONE);
+        if (data!=null && !data.isEmpty()) {
+            bandsAdapter = new BandsAdapter(getActivity(), data);
+            carnivalsList.setAdapter(bandsAdapter);
+            carnivalsProgress.setVisibility(View.GONE);
+            emptyText.setVisibility(View.GONE);
+        } else {
+            carnivalsProgress.setVisibility(View.GONE);
+            emptyText.setVisibility(View.VISIBLE);
+            emptyText.setText("No Bands Available");
+        }
     }
 
     @Override

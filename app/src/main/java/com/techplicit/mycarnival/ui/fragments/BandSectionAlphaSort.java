@@ -158,15 +158,21 @@ public class BandSectionAlphaSort extends Fragment implements Constants, IRespon
 
     @Override
     public void onResponseSuccess(String resp, String req) {
+        carnivalsProgress.setVisibility(View.GONE);
         Log.v("Bands", "Bands Succ " + resp + "," + req);
         Gson gson = new Gson();
         Type listType = new TypeToken<ArrayList<BandSectionPojo>>() {
         }.getType();
         data1 = (ArrayList<BandSectionPojo>) gson.fromJson(resp, listType);
-        bandSectionAdapter = new BandSectionAdapter(getActivity(), data1);
-        carnivalsList.setAdapter(bandSectionAdapter);
-        carnivalsProgress.setVisibility(View.GONE);
-        emptyText.setVisibility(View.GONE);
+        if (data1!= null && !data1.isEmpty()) {
+            bandSectionAdapter = new BandSectionAdapter(getActivity(), data1);
+            carnivalsList.setAdapter(bandSectionAdapter);
+            emptyText.setVisibility(View.GONE);
+        } else {
+            emptyText.setVisibility(View.VISIBLE);
+            emptyText.setText("No Band Sections Available");
+        }
+
     }
 
     @Override

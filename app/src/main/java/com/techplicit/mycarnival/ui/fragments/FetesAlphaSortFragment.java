@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.techplicit.mycarnival.IntentGenerator;
 import com.techplicit.mycarnival.R;
+import com.techplicit.mycarnival.adapters.BandsAdapter;
 import com.techplicit.mycarnival.adapters.FetesAdapter;
 import com.techplicit.mycarnival.apipresenter.ApiResponsePresenter;
 import com.techplicit.mycarnival.data.model.BandLocationPojo;
@@ -143,10 +144,16 @@ public class FetesAlphaSortFragment extends Fragment implements Constants, IResp
             Type listType = new TypeToken<ArrayList<FeteDetailModel>>() {
             }.getType();
             data = (ArrayList<FeteDetailModel>) gson.fromJson(resp, listType);
-            fetesAdapter = new FetesAdapter(getActivity(), data);
-            carnivalsList.setAdapter(fetesAdapter);
-            carnivalsProgress.setVisibility(View.GONE);
-            emptyText.setVisibility(View.GONE);
+            if (data!=null && !data.isEmpty()) {
+                fetesAdapter = new FetesAdapter(getActivity(), data);
+                carnivalsList.setAdapter(fetesAdapter);
+                carnivalsProgress.setVisibility(View.GONE);
+                emptyText.setVisibility(View.GONE);
+            } else {
+                carnivalsProgress.setVisibility(View.GONE);
+                emptyText.setVisibility(View.VISIBLE);
+                emptyText.setText("No Fetes Available");
+            }
         }
     }
 

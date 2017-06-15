@@ -123,8 +123,8 @@ public class WhereAreMyFriends extends Fragment implements Constants, GetFriends
                     if (isPrivacyModeEnabled) {
                         updateUserLocation(true, 0.0, 0.0);
                     } else {
-//                        latitude = 12.9610;
-//                        longitude = 77.6387;
+//                        latitude = 36.778261;
+//                        longitude = -119.417932;
                         if (latitude != 0.0 && longitude != 0.0) {
                             updateUserLocation(false, latitude, longitude);
                         } else {
@@ -223,15 +223,24 @@ public class WhereAreMyFriends extends Fragment implements Constants, GetFriends
                     FriendsLocationsPojo pojo = CarnivalsSingleton.getInstance().getFriendsLocationsPojoArrayList().get(i);
 
                     // Create user marker with custom icon and other options
-                    MarkerOptions markerOption = new MarkerOptions().position(new LatLng(pojo.getLatitude(), pojo.getLongitude()));
+//                    MarkerOptions markerOption = new MarkerOptions().position(new LatLng(pojo.getLatitude(), pojo.getLongitude()));
 
                     if (mMap != null && pojo != null) {
 
-                        //TODO: Test the title
+                        Log.e(TAG, "pojo.getLatitude(): "+pojo.getLatitude());
+                        Log.e(TAG, "pojo.getLongitude(): "+pojo.getLongitude());
+
+                        /*// create marker
+                        MarkerOptions marker = new MarkerOptions().position(new LatLng(pojo.getLatitude(), pojo.getLongitude())).title(pojo.getfName()+" "+pojo.getlName());
+
+                        // adding marker
+                        mMap.addMarker(marker);*/
+
+
                         Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(pojo.getLatitude(), pojo.getLongitude()))
                                 .title(pojo.getfName() + " "+pojo.getlName()));
 //                                .icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons(pojo.getFriendImageBitmap(), 150, 150)))); //...
-                        marker.showInfoWindow();
+//                        marker.showInfoWindow();
                         markers.add(marker);
 
                         mMarkersHashMap.put(marker, pojo);
