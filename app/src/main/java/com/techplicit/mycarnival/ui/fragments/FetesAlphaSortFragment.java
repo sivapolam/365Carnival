@@ -144,7 +144,7 @@ public class FetesAlphaSortFragment extends Fragment implements Constants, IResp
             Type listType = new TypeToken<ArrayList<FeteDetailModel>>() {
             }.getType();
             data = (ArrayList<FeteDetailModel>) gson.fromJson(resp, listType);
-            if (data!=null && !data.isEmpty()) {
+            if (data!=null && !data.isEmpty() && getActivity()!= null) {
                 fetesAdapter = new FetesAdapter(getActivity(), data);
                 carnivalsList.setAdapter(fetesAdapter);
                 carnivalsProgress.setVisibility(View.GONE);

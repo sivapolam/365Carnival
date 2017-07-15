@@ -354,7 +354,7 @@ public class BaseActivity extends AppCompatActivity implements Constants, Naviga
         mNavigationDrawerFragment = new NavigationDrawerFragment();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.layout_navigation, mNavigationDrawerFragment);
-        ft.commit();
+        ft.commitAllowingStateLoss(); // Using commitAllowingStateLoss() resolves Crash issue (java.lang.IllegalStateException: Can not perform this action after onSaveInstanceState)
 
 //        mNavigationDrawerFragment = (NavigationDrawerFragment)
 //                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -387,5 +387,10 @@ public class BaseActivity extends AppCompatActivity implements Constants, Naviga
 
     public void setFooterButtonsSelector() {
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        // Do nothing
     }
 }

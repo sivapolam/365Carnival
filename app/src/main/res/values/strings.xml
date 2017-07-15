@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">365carnival</string>
     <string name="version_number">1.4</string>
-    <string name="version_name">Version 0.2.6</string>
+    <string name="version_name">Version 0.3.0</string>
     <string name="email">support@keysoftamerica.com</string>
 
     <string name="title_section1">Section 1</string>

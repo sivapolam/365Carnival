@@ -111,8 +111,6 @@ public class SmartUpdateService extends Service implements LocationListener, Con
 
         try {
             startUpdates();
-        } catch (InterruptedException e) {
-            Log.e(LOG_TAG, "Exception--> " + e.toString(), e);
         } catch (Exception e) {
             Log.e(LOG_TAG, "Exception--> " + e.toString(), e);
         }
@@ -126,7 +124,7 @@ public class SmartUpdateService extends Service implements LocationListener, Con
     }
 
 
-    public void startUpdates() throws InterruptedException {
+    public void startUpdates() {
 
         ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
 
@@ -140,10 +138,14 @@ public class SmartUpdateService extends Service implements LocationListener, Con
 
                     bandAddress = sharedPreferences.getString(LAST_KNOWN_ADDRESS, "");
 
+                    Log.e(LOG_TAG, "bandAddress: "+bandAddress);
+
                     if (UtilityCommon.isStringValid(bandAddress)) {
+                        Log.e(LOG_TAG, "makeBandLocationAPI");
                         makeBandLocationAPI();
                     } else {
-                        Toast.makeText(getApplicationContext(), "Problem in Fetching Location...", Toast.LENGTH_LONG).show();
+                        Log.e(LOG_TAG, "Problem in Fetching Location");
+//                        Toast.makeText(getApplicationContext(), "Problem in Fetching Location...", Toast.LENGTH_LONG).show();
                     }
 
                 }

@@ -188,6 +188,9 @@ public class SmartUpdateService extends Service implements LocationListener, Con
                 }
 
                 updatesCount++;
+                Logger.addRecordToLog("updatesCount --> "+updatesCount);
+                Logger.addRecordToLog("updatesInterval --> "+updatesInterval);
+
                 if (updatesCount == updatesInterval && scheduledFuture != null) {
                     scheduledFuture.cancel(false);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -196,7 +199,7 @@ public class SmartUpdateService extends Service implements LocationListener, Con
 //                    setupSmartUpdateButton(true);
 
                     stopSelf();
-
+                    Logger.addRecordToLog("Updates Stopped --> ");
                 }
 
             }

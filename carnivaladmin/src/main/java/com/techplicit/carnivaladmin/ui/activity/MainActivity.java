@@ -35,6 +35,7 @@ import com.techplicit.carnivaladmin.interfaces.IFragmentListener;
 import com.techplicit.carnivaladmin.ui.fragments.BandUpdateFragment;
 import com.techplicit.carnivaladmin.ui.fragments.SmartUpdateFragment;
 import com.techplicit.carnivalcommons.CommonSingleton;
+import com.techplicit.carnivalcommons.SmartUpdateService;
 import com.techplicit.carnivalcommons.apipresenter.ApiResponsePresenter;
 import com.techplicit.carnivalcommons.data.BandLocationPojo;
 import com.techplicit.carnivalcommons.interfaces.IRequestInterface;
@@ -251,6 +252,19 @@ public class MainActivity extends AppCompatActivity implements IResponseInterfac
                 finish();
             }
         });
+
+        Button reset = (Button)findViewById(R.id.reset);
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = mSharedPreferences.edit();
+                editor.putBoolean(IS_SMART_UPDATED, true);
+                editor.apply();
+
+                Toast.makeText(getApplicationContext(), "Updates reset successfully!", Toast.LENGTH_LONG).show();
+            }
+        });
+
 
 //        updateToolBar(getString(R.string.app_name) +" v"+getString(R.string.version_num_admin));
         updateToolBar("Smart Update");

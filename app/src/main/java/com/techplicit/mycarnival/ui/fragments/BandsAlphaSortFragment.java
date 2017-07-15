@@ -163,6 +163,7 @@ public class BandsAlphaSortFragment extends Fragment implements Constants, IResp
         Type listType = new TypeToken<ArrayList<BandsPojo>>() {
         }.getType();
         data = (ArrayList<BandsPojo>) gson.fromJson(resp, listType);
+
         if (data!=null && !data.isEmpty()) {
             bandsAdapter = new BandsAdapter(getActivity(), data);
             carnivalsList.setAdapter(bandsAdapter);

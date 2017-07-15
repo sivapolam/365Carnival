@@ -129,7 +129,6 @@ public class BandLocationAlphaSortFragment extends Fragment implements Constants
                 carnivalsProgress.setVisibility(View.GONE);
                 if (CarnivalsSingleton.getInstance().getBandsPojoArrayList()!=null){
                     quizModelArrayList = CarnivalsSingleton.getInstance().getBandsPojoArrayList();
-
                     carnivalsList.setAdapter(new BandLocationGridAdapter(getActivity(),quizModelArrayList));
                     carnivalsProgress.setVisibility(View.GONE);
                     emptyText.setVisibility(View.GONE);
