@@ -173,15 +173,24 @@ public class BandsAlphaSortFragment extends Fragment implements Constants, IResp
             carnivalsProgress.setVisibility(View.GONE);
             emptyText.setVisibility(View.VISIBLE);
             emptyText.setText("No Bands Available");
+            Utility.showAlertDialog(getActivity(), "No Info Yet");
         }
     }
 
     @Override
     public void onResponseFailure(String req) {
         Log.v("Bands", "Bands Fail " + req);
+
         carnivalsProgress.setVisibility(View.GONE);
         emptyText.setVisibility(View.VISIBLE);
-        emptyText.setText("Response Failed...");
+
+        if (req.equalsIgnoreCase(PARSE_ERROR)) {
+            Utility.showAlertDialog(getActivity(), "No Info Yet");
+            emptyText.setText("No Bands Available...");
+        } else {
+            emptyText.setText("Response Failed...");
+        }
+
     }
 
     @Override

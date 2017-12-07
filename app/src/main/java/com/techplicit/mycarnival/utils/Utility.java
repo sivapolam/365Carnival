@@ -305,4 +305,23 @@ public class Utility implements Constants {
             return mDay + "-" + monthNames[mMonth] + "-" + mYear;
         }
     }
+
+    public static void showAlertDialog(final Activity activityContext, String message) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activityContext);
+        alertDialogBuilder.setMessage(message);
+
+        alertDialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface arg0, int arg1) {
+                    activityContext.finish();
+                }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.setCancelable(false);
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.show();
+    }
+
+
 }

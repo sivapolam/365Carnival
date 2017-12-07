@@ -125,7 +125,8 @@ public class BandLocationAlphaSortFragment extends Fragment implements Constants
     private void loadBandsData(TextView emptyText, ProgressBar carnivalsProgress) {
         if (Utility.isNetworkConnectionAvailable(getActivity())) {
 
-            if (CarnivalsSingleton.getInstance().getBandsPojoArrayList()!=null){
+            if (CarnivalsSingleton.getInstance().getBandsPojoArrayList()!=null
+                    && !CarnivalsSingleton.getInstance().getBandsPojoArrayList().isEmpty()){
                 carnivalsProgress.setVisibility(View.GONE);
                 if (CarnivalsSingleton.getInstance().getBandsPojoArrayList()!=null){
                     quizModelArrayList = CarnivalsSingleton.getInstance().getBandsPojoArrayList();
@@ -232,7 +233,8 @@ public class BandLocationAlphaSortFragment extends Fragment implements Constants
 
                 CarnivalsSingleton.getInstance().setBandsJsonResponse(jsonArray);
 
-                if (CarnivalsSingleton.getInstance().getBandsJsonResponse() != null) {
+                if (CarnivalsSingleton.getInstance().getBandsJsonResponse() != null
+                        && !CarnivalsSingleton.getInstance().getBandsPojoArrayList().isEmpty()) {
                     quizModelArrayList = CarnivalsSingleton.getInstance().getBandsPojoArrayList();
 
                     carnivalsList.setAdapter(new BandLocationGridAdapter(mContext, quizModelArrayList));

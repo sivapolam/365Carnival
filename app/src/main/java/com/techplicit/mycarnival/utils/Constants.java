@@ -120,4 +120,5 @@ public interface Constants {
     String IS_SMART_UPDATED = "IS_SMART_UPDATED";
     String LAST_UPDATE = "LAST_UPDATE";
 
+    String PARSE_ERROR = "PARSE_ERROR";
 }

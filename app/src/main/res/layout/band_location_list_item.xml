@@ -72,7 +72,6 @@
                 android:layout_width="@dimen/dp_0"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.2"
-                android:text="00:53:40 ago"
                 android:textColor="@color/white"
                 android:textSize="@dimen/band_list_item_time_text_size"
                 android:singleLine="true"

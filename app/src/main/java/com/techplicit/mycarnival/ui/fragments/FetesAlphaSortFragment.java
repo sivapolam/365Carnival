@@ -160,11 +160,15 @@ public class FetesAlphaSortFragment extends Fragment implements Constants, IResp
     @Override
     public void onResponseFailure(String req) {
         Log.v("Bands", "Bands Fail " + req);
-        if (!TextUtils.isEmpty(req) && req.equalsIgnoreCase(LOAD_BANDS)) {
-            carnivalsProgress.setVisibility(View.GONE);
-            emptyText.setVisibility(View.VISIBLE);
+        carnivalsProgress.setVisibility(View.GONE);
+        emptyText.setVisibility(View.VISIBLE);
+
+        if (req.equalsIgnoreCase(PARSE_ERROR)) {
+            emptyText.setText("No Fetes Available...");
+        } else {
             emptyText.setText("Response Failed...");
         }
+
     }
 
     @Override

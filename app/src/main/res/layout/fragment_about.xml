@@ -16,7 +16,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/carnival_logo_new"
+        android:src="@drawable/ic_carnival_logo_aboutus"
         android:layout_alignBottom="@+id/view"
         android:layout_centerHorizontal="true"/>
 

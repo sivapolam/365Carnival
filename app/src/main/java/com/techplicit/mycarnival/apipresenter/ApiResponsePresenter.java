@@ -3,6 +3,7 @@ package com.techplicit.mycarnival.apipresenter;
 import android.util.Log;
 
 import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Response;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
@@ -11,6 +12,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.techplicit.mycarnival.MyApplication;
 import com.techplicit.mycarnival.interfaces.IRequestInterface;
 import com.techplicit.mycarnival.interfaces.IResponseInterface;
+import com.techplicit.mycarnival.utils.Constants;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -64,6 +66,8 @@ public class ApiResponsePresenter implements IRequestInterface {
                         iResponseInterface.onResponseFailure(reqName);
                     } else if (error instanceof TimeoutError) {
                         iResponseInterface.onResponseFailure(reqName);
+                    } else if (error instanceof ParseError) {
+                        iResponseInterface.onResponseFailure(Constants.PARSE_ERROR);
                     } else {
                         iResponseInterface.onResponseFailure(error.getLocalizedMessage());
                     }
@@ -90,6 +94,8 @@ public class ApiResponsePresenter implements IRequestInterface {
                         iResponseInterface.onResponseFailure(reqName);
                     } else if (error instanceof TimeoutError) {
                         iResponseInterface.onResponseFailure(reqName);
+                    } else if (error instanceof ParseError) {
+                        iResponseInterface.onResponseFailure(Constants.PARSE_ERROR);
                     } else {
                         iResponseInterface.onResponseFailure(error.getLocalizedMessage());
                     }

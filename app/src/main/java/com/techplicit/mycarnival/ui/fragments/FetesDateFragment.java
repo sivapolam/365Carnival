@@ -146,6 +146,7 @@ public class FetesDateFragment extends Fragment implements Constants, IResponseI
                 carnivalsProgress.setVisibility(View.GONE);
                 emptyText.setVisibility(View.VISIBLE);
                 emptyText.setText("No Fetes Available");
+                Utility.showAlertDialog(getActivity(), "No Info Yet");
             }
         }
     }
@@ -153,11 +154,16 @@ public class FetesDateFragment extends Fragment implements Constants, IResponseI
     @Override
     public void onResponseFailure(String req) {
         Log.v("Bands", "Bands Fail " + req);
-        if (!TextUtils.isEmpty(req) && req.equalsIgnoreCase(LOAD_BANDS)) {
-            carnivalsProgress.setVisibility(View.GONE);
-            emptyText.setVisibility(View.VISIBLE);
+        carnivalsProgress.setVisibility(View.GONE);
+        emptyText.setVisibility(View.VISIBLE);
+
+        if (req.equalsIgnoreCase(PARSE_ERROR)) {
+            emptyText.setText("No Fetes Available...");
+            Utility.showAlertDialog(getActivity(), "No Info Yet");
+        } else {
             emptyText.setText("Response Failed...");
         }
+
     }
 
     @Override

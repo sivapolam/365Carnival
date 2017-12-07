@@ -148,7 +148,7 @@ public class BandLocationDistanceFragment extends Fragment implements Constants,
 //                new GetAsync(getActivity(), carnivalsProgress).execute();
 //            }
 
-            if (CarnivalsSingleton.getInstance().getBandsPojoArrayList() != null) {
+            if (CarnivalsSingleton.getInstance().getBandsPojoArrayList() != null && !CarnivalsSingleton.getInstance().getBandsPojoArrayList().isEmpty()) {
                 carnivalsProgress.setVisibility(View.GONE);
 
                 if (CarnivalsSingleton.getInstance().getBandsPojoArrayList() != null) {
@@ -282,7 +282,8 @@ public class BandLocationDistanceFragment extends Fragment implements Constants,
 
                 CarnivalsSingleton.getInstance().setBandsJsonResponse(jsonArray);
 
-                if (CarnivalsSingleton.getInstance().getBandsPojoArrayList() != null) {
+                if (CarnivalsSingleton.getInstance().getBandsPojoArrayList() != null
+                        && !CarnivalsSingleton.getInstance().getBandsPojoArrayList().isEmpty()) {
                     quizModelArrayList = CarnivalsSingleton.getInstance().getBandsPojoArrayList();
 
                     ArrayList<SortedDistanceBandsPojo> sortedDistanceBandsPojosList = new ArrayList<SortedDistanceBandsPojo>();
@@ -329,6 +330,7 @@ public class BandLocationDistanceFragment extends Fragment implements Constants,
                 this.carnivalsProgress.setVisibility(View.GONE);
                 emptyText.setVisibility(View.VISIBLE);
                 emptyText.setText("No Bands Available");
+                Utility.showAlertDialog(mContext, "No Info Yet");
             }
 
         }

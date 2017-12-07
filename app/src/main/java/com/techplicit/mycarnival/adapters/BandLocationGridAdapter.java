@@ -71,33 +71,40 @@ public class BandLocationGridAdapter extends BaseAdapter implements Constants {
 
         bandsPojo = (BandLocationPojo)this.bandsPojoArrayList.get(position);
 
-        String lastAccessOn = UtilityCommon.getDate(Long.valueOf(bandsPojo.getLastUpdated()), "MM/dd/yyyy HH:mm:ss");
+        if (bandsPojo.getLastUpdated() != null) {
+            String lastAccessOn = UtilityCommon.getDate(Long.valueOf(bandsPojo.getLastUpdated()), "MM/dd/yyyy HH:mm:ss");
 
-        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-        Calendar c = Calendar.getInstance();
-        String currentDate = format.format(c.getTime());
+            SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+            Calendar c = Calendar.getInstance();
+            String currentDate = format.format(c.getTime());
 
-        Date d1 = new Date();
-        Date d2 = null;
+            Date d1 = new Date();
+            Date d2 = null;
 
-        try {
-            d1 = format.parse(currentDate);
-            d2 = format.parse(lastAccessOn);
-        } catch (ParseException e) {
-            e.printStackTrace();
+            try {
+                d1 = format.parse(currentDate);
+                d2 = format.parse(lastAccessOn);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            // in milliseconds
+            long diff = d1.getTime() - d2.getTime();
+
+            String lastUpdateStatus = BandsDateFormatsConverter.printDateDifferenceInUIWithDefinedFormat(diff);
+
+            if (lastUpdateStatus!=null && !lastUpdateStatus.equalsIgnoreCase("")){
+                holder.timeBand.setText("Updated: "+lastUpdateStatus);
+            }
         }
 
-        // in milliseconds
-        long diff = d1.getTime() - d2.getTime();
-
-        String lastUpdateStatus = BandsDateFormatsConverter.printDateDifferenceInUIWithDefinedFormat(diff);
-
-        if (lastUpdateStatus!=null && !lastUpdateStatus.equalsIgnoreCase("")){
-            holder.timeBand.setText("Updated: "+lastUpdateStatus);
-        }
 
         holder.titleBand.setText(bandsPojo.getName());
-        holder.subTitleBand.setText(bandsPojo.getAddress());
+        if (bandsPojo.getAddress() != null && !bandsPojo.getAddress().isEmpty()) {
+            holder.subTitleBand.setText(bandsPojo.getAddress());
+        } else {
+            holder.subTitleBand.setText("Location not updated");
+        }
         holder.updatesBand.setText(bandsPojo.getUpdates()+" UPDATES");
 
         rootView.setId(position);

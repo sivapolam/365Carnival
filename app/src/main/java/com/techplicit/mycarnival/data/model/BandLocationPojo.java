@@ -11,7 +11,7 @@ import org.json.JSONObject;
  */
 public class BandLocationPojo implements Parcelable{
 
-    private String name, image, address, latitude, longitude, updates, lastUpdated;
+    private String name, image, address, latitude = "0.0", longitude = "0.0", updates, lastUpdated;
     private JSONObject locationObject;
     private boolean activeFlag;
 
